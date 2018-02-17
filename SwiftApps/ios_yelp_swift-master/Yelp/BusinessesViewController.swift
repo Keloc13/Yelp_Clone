@@ -10,12 +10,16 @@ import UIKit
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var searchBarItem: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var businesses: [Business]!
     
+    var filteredData: [String]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+        navigationItem.titleView = searchBarItem
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -35,6 +39,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             
             }
         )
+        
+        //searchBarItem.sizeToFit()
+        
+        //navigationItem.titleView = searchBarItem
         
         
         /* Example of Yelp search with more search options specified
