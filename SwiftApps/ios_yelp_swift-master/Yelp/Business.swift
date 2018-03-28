@@ -16,19 +16,30 @@ class Business: NSObject {
     let distance: String?
     let ratingImageURL: URL?
     let reviewCount: NSNumber?
+    let latitude: Double?
+    let longitude: Double?
+    let backgroundPhoto: String?
+    let phoneNumber: String?
     
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
-        
+       
         let imageURLString = dictionary["image_url"] as? String
         if imageURLString != nil {
             imageURL = URL(string: imageURLString!)!
         } else {
             imageURL = nil
         }
+        print(dictionary)
+        self.backgroundPhoto = dictionary["snippet_image_url"] as? String
+        self.phoneNumber = dictionary["display_phone"] as? String
+        print("THE PHONE NUMBER:", phoneNumber)
         
         let location = dictionary["location"] as? NSDictionary
         var address = ""
+        let coordinates = location!["coordinate"] as? NSDictionary
+        self.latitude = coordinates?["latitude"] as! Double
+        self.longitude = coordinates?["longitude"] as! Double
         if location != nil {
             let addressArray = location!["address"] as? NSArray
             if addressArray != nil && addressArray!.count > 0 {

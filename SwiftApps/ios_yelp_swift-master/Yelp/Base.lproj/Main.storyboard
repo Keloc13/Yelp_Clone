@@ -123,6 +123,7 @@
                                             <outlet property="ReviewsLabel" destination="FZi-HH-d5W" id="I2g-jL-hRy"/>
                                             <outlet property="TitleLabel" destination="lfw-qr-PG2" id="jBd-9t-95f"/>
                                             <outlet property="ratingImageView" destination="iID-Mr-0qp" id="6Uz-01-aEZ"/>
+                                            <segue destination="ELb-zb-TMV" kind="show" id="3x8-bZ-EaW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -138,6 +139,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Yelp" id="snH-Em-hkW"/>
                     <connections>
+                        <outlet property="searchBar" destination="Qwv-BF-tfK" id="UPN-74-x0K"/>
                         <outlet property="searchBarItem" destination="Qwv-BF-tfK" id="M04-qa-Jq1"/>
                         <outlet property="tableView" destination="han-Hs-02Q" id="5pn-si-2Zx"/>
                     </connections>
@@ -145,6 +147,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgb-4b-F1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2125.5999999999999" y="356.67166416791605"/>
+        </scene>
+        <!--Business View Controller-->
+        <scene sceneID="e7D-n2-Not">
+            <objects>
+                <viewController id="ELb-zb-TMV" customClass="BusinessViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qeB-Qn-85B"/>
+                        <viewControllerLayoutGuide type="bottom" id="4u7-rO-cYa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f4c-zL-RQA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Zv6-BU-M03">
+                                <rect key="frame" x="0.0" y="64" width="375" height="229"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hY-DK-rpQ">
+                                <rect key="frame" x="16" y="301" width="179" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx2-Kz-gdR">
+                                <rect key="frame" x="16" y="338" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9uY-MQ-eWf">
+                                <rect key="frame" x="16" y="367" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iis-z0-whN">
+                                <rect key="frame" x="16" y="396" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="256" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oml-Xs-CMc">
+                                <rect key="frame" x="205" y="301" width="170" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="1wZ-MJ-bos"/>
+                                    <constraint firstAttribute="width" constant="170" id="FSR-dW-OAf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="pBV-2q-pJb"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kx2-Kz-gdR" firstAttribute="top" secondItem="0hY-DK-rpQ" secondAttribute="bottom" constant="8" id="1Y9-PP-hu2"/>
+                            <constraint firstItem="4u7-rO-cYa" firstAttribute="top" secondItem="oml-Xs-CMc" secondAttribute="bottom" constant="238" id="2sK-5W-ULl"/>
+                            <constraint firstItem="oml-Xs-CMc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kx2-Kz-gdR" secondAttribute="trailing" constant="10" id="EDc-E0-ZS1"/>
+                            <constraint firstItem="oml-Xs-CMc" firstAttribute="top" secondItem="Zv6-BU-M03" secondAttribute="bottom" constant="8" id="Efv-Oj-gPt"/>
+                            <constraint firstItem="Zv6-BU-M03" firstAttribute="top" secondItem="qeB-Qn-85B" secondAttribute="bottom" id="G6K-Jc-IM6"/>
+                            <constraint firstAttribute="trailing" secondItem="Zv6-BU-M03" secondAttribute="trailing" id="Hc5-ee-ZrQ"/>
+                            <constraint firstItem="9uY-MQ-eWf" firstAttribute="leading" secondItem="f4c-zL-RQA" secondAttribute="leadingMargin" id="JUc-HG-IcM"/>
+                            <constraint firstItem="0hY-DK-rpQ" firstAttribute="top" secondItem="Zv6-BU-M03" secondAttribute="bottom" constant="8" id="NSY-X6-bHJ"/>
+                            <constraint firstItem="iis-z0-whN" firstAttribute="leading" secondItem="f4c-zL-RQA" secondAttribute="leadingMargin" id="UIE-5i-qJw"/>
+                            <constraint firstItem="0hY-DK-rpQ" firstAttribute="leading" secondItem="f4c-zL-RQA" secondAttribute="leadingMargin" id="Ukg-fc-gs7"/>
+                            <constraint firstItem="kx2-Kz-gdR" firstAttribute="leading" secondItem="f4c-zL-RQA" secondAttribute="leadingMargin" id="YBX-IZ-AI9"/>
+                            <constraint firstItem="iis-z0-whN" firstAttribute="top" secondItem="9uY-MQ-eWf" secondAttribute="bottom" constant="8" id="ZBS-fE-SCb"/>
+                            <constraint firstItem="9uY-MQ-eWf" firstAttribute="top" secondItem="kx2-Kz-gdR" secondAttribute="bottom" constant="8" id="dkV-Oe-fCJ"/>
+                            <constraint firstItem="4u7-rO-cYa" firstAttribute="top" relation="lessThanOrEqual" secondItem="oml-Xs-CMc" secondAttribute="bottom" constant="238" id="dlm-zz-Kbn"/>
+                            <constraint firstItem="Zv6-BU-M03" firstAttribute="leading" secondItem="f4c-zL-RQA" secondAttribute="leading" id="hHj-gm-AgY"/>
+                            <constraint firstItem="oml-Xs-CMc" firstAttribute="leading" secondItem="iis-z0-whN" secondAttribute="trailing" constant="39" id="iA3-OW-QSO"/>
+                            <constraint firstItem="4u7-rO-cYa" firstAttribute="top" relation="lessThanOrEqual" secondItem="iis-z0-whN" secondAttribute="bottom" constant="258" id="j11-Ab-nFt"/>
+                            <constraint firstItem="oml-Xs-CMc" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9uY-MQ-eWf" secondAttribute="trailing" constant="57" id="pA6-Dt-dIF"/>
+                            <constraint firstItem="oml-Xs-CMc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0hY-DK-rpQ" secondAttribute="trailing" constant="10" id="rpl-h6-wcV"/>
+                            <constraint firstAttribute="trailing" secondItem="oml-Xs-CMc" secondAttribute="trailing" id="zRS-cY-I9H"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="oml-Xs-CMc" id="ExH-cx-fez"/>
+                        <outlet property="businessAddress" destination="kx2-Kz-gdR" id="4pI-QR-f7E"/>
+                        <outlet property="businessLocation" destination="Zv6-BU-M03" id="kcC-2S-10B"/>
+                        <outlet property="businessName" destination="0hY-DK-rpQ" id="CUe-Vf-ITN"/>
+                        <outlet property="phoneNumber" destination="9uY-MQ-eWf" id="8OB-vd-z1f"/>
+                        <outlet property="typeOfFood" destination="iis-z0-whN" id="58V-Td-Hb0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="atH-zx-Gfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2901.5999999999999" y="357.57121439280365"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7sN-m9-i9V">
